@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Image Detection</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald&family=Caveat&family=Honk&family=Boldonse&family=Jersey 25&family=Tourney&family=Lexend Bold&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- WHITE HEADER -->
+<div class="header">
+    <h2>AI IMAGE DETECTION SYSTEM</h2>
+    <p>⚠️ This tool may not be 100% accurate. Use responsibly.</p>
+</div>
+
+<!-- BACKGROUND IMAGE SECTION -->
+<div class="main-section">
+
+    <!-- CARD -->
+    <div class="card">
+
+        <h1>Generated or Genuine?</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <label class="upload-box">
+                <input type="file" name="image" id="fileInput" required>
+                <span id="uploadText">📤 UPLOAD IMAGE</span>
+            </label>
+
+            <img id="previewImage" class="preview" style="display:none;"/>
+
+            <button type="submit">ANALYZE</button>
+
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+
+            <h2>{{ result.label }}</h2>
+
+            <div class="progress">
+                <p>AI GENRATED</p>
+                <div class="bar">
+                    <div class="fill ai" data-width="{{ result.ai }}"></div>
+                </div>
+                <span>{{ result.ai }}%</span>
+            </div>
+
+            <div class="progress">
+                <p>REAL IMAGE</p>
+                <div class="bar">
+                    <div class="fill real" data-width="{{ result.real }}"></div>
+                </div>
+                <span>{{ result.real }}%</span>
+            </div>
+
+            <img src="{{ result.image }}" class="result-img">
+
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    PROJECT BY SUPRITH - GANESH - MITHUN - THANUSHREE
+</div>
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const uploadText = document.getElementById("uploadText");
+const previewImage = document.getElementById("previewImage");
+
+fileInput.addEventListener("change", function() {
+    const file = this.files[0];
+
+    if (file) {
+        uploadText.innerText = "📁 " + file.name;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            previewImage.src = e.target.result;
+            previewImage.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+/* PROGRESS FIX */
+document.querySelectorAll('.fill').forEach(el => {
+    let width = parseFloat(el.getAttribute('data-width')) || 0;
+    el.style.width = width + "%";
+});
+</script>
+
+</body>
+</html>
