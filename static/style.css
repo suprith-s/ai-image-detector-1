@@ -1,0 +1,140 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+
+    border: 0px solid rgb(0, 0, 0);
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+}
+
+/* HEADER (WHITE SECTION) */
+.header {
+    background: rgb(255, 255, 255);
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h2 {
+    font-family: 'Honk', system-ui;
+    font-size: 70px;
+    margin: 0;
+}
+
+.header p {
+    font-size: 12px;
+    color: #666;
+    
+    animation: warningBounce 0.8s ease-in-out infinite;
+}
+
+@keyframes warningBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* MAIN BACKGROUND IMAGE SECTION */
+.main-section {
+    height: calc(100vh - 80px);
+    background: url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe") no-repeat center;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+.card {
+    width: 380px;
+    padding: 25px;
+    text-align: center;
+    color: white;
+}
+
+/* TITLE */
+.card h1 {
+    margin-bottom: 35px;
+    font-family: 'jersey 25', system-ui;
+    font-size: 50px;
+    letter-spacing: 5px;
+    color: rgb(0, 0, 0);
+}
+
+/* UPLOAD */
+.upload-box {
+    margin-bottom: 10px;
+    border: 2px solid #ffffff;
+    background-color: #f4f4f4;
+    font-family: 'Oswald', system-ui;
+    font-weight: bold;
+    padding: 5px 80px;
+    border-radius: 5px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.upload-box input {
+    display: none;
+}
+
+/* BUTTON */
+button {
+    margin-top: 15px;
+    padding: 10px 114px;
+    border: none;
+    background: linear-gradient(90deg, #fff700, #00ccff);
+    font-family: 'Oswald', system-ui;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RESULT */
+.result-box {
+    margin-top: 20px;
+    font-family: 'Lexend Bold', system-ui;
+    color: #000000;
+}
+
+/* PROGRESS */
+.bar {
+    height: 8px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    width: 0;
+    transition: width 0.5s;
+}
+
+.ai {
+    background: #ff4b5c;
+}
+
+.real {
+    background: #00ff99;
+}
+
+/* IMAGE */
+.result-img, .preview {
+    display: block;
+    margin: 15px auto;
+    width: 160px;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+}
